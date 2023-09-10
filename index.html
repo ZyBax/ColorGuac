@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ColorGuac 🥑 </title>
+    <title>Color Picker Fullscreen</title>
     <style>
         body {
             display: flex;
@@ -24,11 +24,13 @@
             position: fixed;
             top: 10px;
             left: 10px;
+            display: none; /* Hide the back button initially */
         }
         #watermark {
             position: fixed;
             bottom: 10px;
             right: 10px;
+            font-size: small; /* Make the watermark text smaller */
         }
     </style>
 </head>
@@ -43,13 +45,25 @@
         function showColor() {
             var color = document.getElementById('colorPicker').value;
             var fullscreenDiv = document.getElementById('fullscreen');
+            
+            /* Calculate the contrast color for the watermark text */
+            var contrastColor = (parseInt(color.substring(1), 16) > 0xffffff / 2) ? '#000000' : '#ffffff';
+            
             fullscreenDiv.style.backgroundColor = color;
             fullscreenDiv.style.display = 'block';
+            
+            /* Show the back button and set the watermark text color when showing the color */
+            document.getElementById('back').style.display = 'block';
+            document.getElementById('watermark').style.color = contrastColor;
         }
 
         function back() {
             var fullscreenDiv = document.getElementById('fullscreen');
+            
             fullscreenDiv.style.display = 'none';
+            
+            /* Hide the back button when going back to the color picker */
+            document.getElementById('back').style.display = 'none';
         }
     </script>
 </body>
