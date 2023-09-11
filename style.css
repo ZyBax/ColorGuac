@@ -1,0 +1,16 @@
+@media only screen and (max-width: 600px) {
+  body {
+    zoom: 350%;
+  }
+}
+body {
+  background-image: url('bckgrd.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-image: url('bckgrd-mobile.png');
+  }
+}
